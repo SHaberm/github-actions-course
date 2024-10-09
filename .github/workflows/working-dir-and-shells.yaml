@@ -35,5 +35,5 @@ jobs:
       - name: Python Shell
         shell: python
         run: |
-          inport platform
+          import platform
           print(platform.processor())
