@@ -1,5 +1,9 @@
 name: Working Dirs and Shells
 on: [push]
+defaults:
+  run: 
+    shell: bash
+    # working-directory: <specify directory>
 
 jobs:
   display-wed-info:
@@ -12,13 +16,24 @@ jobs:
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
+      - name: Change Working Directory
+        working-directory: /home/runner
+        run: pwd
   display-wed-info-windows:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
     steps:
       - name: Display working directory and list files
         run: |
-          pwd
-          ls -a
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
+          Get-Location
+          dir
+          echo $env:GITHUB_SHA
+          echo $env:GITHUB_REPOSITORY
+          echo $env:GITHUB_WORKSPACE
+      - name: Python Shell
+        shell: python
+        run: |
+          inport platform
+          print(platform.processor())
