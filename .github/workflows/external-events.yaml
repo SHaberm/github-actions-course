@@ -1,11 +1,13 @@
 name: External Events
 on:
   repository_dispatch:
+    types: [build]
 
 jobs:
   echo-a-string:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Repository Dispatch"
+      - run: echo ${{ github.event.client_payload.env }}
 
 # This has to live in the default branch or it will NOT run.
+# Add custom types (anything we want). This will restrict how workflow gets triggerd from REST API
