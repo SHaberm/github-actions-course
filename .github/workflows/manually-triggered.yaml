@@ -40,3 +40,12 @@ jobs:
           echo "Option: ${{ inputs.option }}"
           echo "Boolean: ${{ inputs.boolean }}"
           echo "Environment: ${{ inputs.environment }}"
+
+#
+# CLI
+# Need to install it and then can issue a command like the following:
+# gh workflow run manually-triggered.yaml -f string="from cli"
+#
+# REST API
+# You can also send an REST API request as well.
+# Look at doco for the format, etc. Need a token.
