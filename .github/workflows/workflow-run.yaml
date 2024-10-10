@@ -3,6 +3,7 @@ on:
   workflow_run:
     workflows: [Repository Events]
     types: [completed]
+    # Can use braches, paths, tags here as well. It iwll run IF the Respository Events process what we specify here
 
 jobs:
   echo-string:

@@ -1,8 +1,30 @@
 name: Repository Events
 on:
   push:
+    branches: 
+      - main
+      - "feature/*"   # Match any branch start with feature/ - not mach feature/aaa/something
+      - "feature/**"  # match feature/aaa/something
+      - "!feature/feata"  # Ignore a branch but ORDER is important (this one will not work since the previous filters will pass)
+    # branches-ignore:  # cannto have branches and branches-ignore so need to use the ! in branches
+    #  - develop
+    tags:
+      - v1.*  # match v1.1, etc
+    #tags-ignore # same as brach ignore...cannot use with tags.
+    #  - v2
+    paths:
+      - "**.js"
+    #paths-ignore # follows same rules
+    #  -"*.cs"
+    #
+    # You must match ALL your filters (path, tags, branch) for workflow to run
   pull_request:
     types: [opened, assigned, reopened, synchronize]
+    branches:
+      - main
+    paths:
+      - "**.js"
+    # For this example with pull request, it will only proces if a javascript file is changed AND it is targeted for the main branch
   issues:
     types: [opened]
 
