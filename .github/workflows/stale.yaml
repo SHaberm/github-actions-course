@@ -2,7 +2,7 @@ name: Stale Issues & PRs
 on:
   schedule:
     - cron: "* 14 * * *"
-    - cron: "0/5 * * * *" # just for testing
+    - cron: "0/5 * * * *" # just for testing - every 5 mins
 
 jobs:
   stale:
@@ -12,4 +12,4 @@ jobs:
         with:
           stale-issue-message: "This is some message"
           days-before-stale: 1
-          days-before-close: 5
+          days-before-close: 4
