@@ -10,7 +10,7 @@ jobs:
     # if: $GITHUB_REF == 'refs/heads/main' DONT DO THIS
     # It is VERY important to use context and not environment variable.
     # The IF part is processed BY GitHub Actions BEFORE sending it to the runner.
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.ref }} == 'refs/heads/main' # you do not need the ${{ }} 
     env:
       JOB_LEVEL_ENV: Available to all steps in env-vars-and-context job
     steps:
